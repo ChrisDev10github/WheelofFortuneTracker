@@ -19,11 +19,9 @@ wheelvalue=1
 vguess=''
 cguess=''
 wguess=''
+finalplayer=0
 
 
-
-def spinwheel():
-    wheelvalue=random(wheel)
 
 def getword():
     f = open(r'C:\Users\Chris\Documents\PythonCode\words.txt')
@@ -73,9 +71,9 @@ def vowel():
 
 
 def constinent():
+    wheelvalue=random(wheel)                #spin wheel
 
     if personturn==3:       #player 3
-        spinwheel()
         if wheelvalue >0:
            cguess = str(input('Enter a constient in lowercase form: ')) 
            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
@@ -93,7 +91,6 @@ def constinent():
 
 
     if personturn==2:       #player 2
-        spinwheel()
         if wheelvalue >0:
            cguess = str(input('Enter a constient in lowercase form: ')) 
            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
@@ -111,7 +108,6 @@ def constinent():
 
 
     if personturn==1:       #player 1
-        spinwheel()
         if wheelvalue >0:
            cguess = str(input('Enter a constient in lowercase form: ')) 
            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
@@ -134,6 +130,7 @@ def wordguess():
     if wguess ==word:
         print(goal)
         print("You guessed the word correctly!")
+        turnyes=False
         roundnumber += 1
     else:
         turnyes=False
@@ -163,7 +160,7 @@ while roundnumber == 1:
         choice =int(input('''
                             What do you want to do (1-3):
                                 1. Buy vowel
-                                2. Guess Constinent
+                                2. Spin the Wheel and Guess a Constinent
                                 3. Guess Word''')) 
         if choice == 1:
             vowel()
@@ -173,4 +170,52 @@ while roundnumber == 1:
             wordguess()
     countturn+=1
 
-#Main game redefine word=getword(), output[], and make goal.list(word)
+
+#Round 2
+word=getword()
+word=word.lower()
+goal=list(word)
+output=[]
+for i in range(0,len(goal),1):
+    output.append('_ ')
+
+while roundnumber == 2:
+    turnyes=True
+    
+    #individual turn
+    while turnyes == True:
+        if countturn%3==0:
+            personturn=3
+        elif countturn%2==0:
+            personturn=2
+        else: 
+            personturn=1
+
+        choice =int(input('''
+                            What do you want to do (1-3):
+                                1. Buy vowel
+                                2. Guess Constinent
+                                3. Guess Word''')) 
+        if choice == 1:
+            vowel()
+        if choice == 2:
+            constinent()
+        else:
+            wordguess()
+    countturn+=1
+    
+
+#Knowing Final Player
+if player3amount > player1amount and player3amount > player2amount:
+    finalplayer = 3
+if player2amount > player1amount and player2amount > player3amount:
+    finalplayer = 2
+if player1amount > player2amount and player1amount > player3amount:
+    finalplayer = 1
+
+
+#Final Round
+
+
+
+
