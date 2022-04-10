@@ -5,13 +5,10 @@ player1amount = 0
 player2amount = 0
 player3amount = 0
 
-#word=''
-wheel = [100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,-1,0]      #-1 is for bankrupt and 0 is for lose turn
-#output=[]
-#goal=list(word)
+wheel = [100,150,200,250,300,350,400,450,500,550,600,650,700,750,800,850,900,'Bankrupt','Lose Turn']      #-1 is for bankrupt and 0 is for lose turn
 
 turnyes=True
-countturn=0
+countturn=1                         #look at val later
 game = True
 roundnumber=1
 personturn=1
@@ -21,6 +18,9 @@ cguess=''
 wguess=''
 finalplayer=0
 
+
+def spinwheel():
+    return random.choice(wheel) 
 
 
 def getword():
@@ -71,19 +71,19 @@ def vowel():
 
 
 def constinent():
-    wheelvalue=random(wheel)                #spin wheel
-
+    wheelvalue = spinwheel()                    #spin wheel
     if personturn==3:       #player 3
-        if wheelvalue >0:
-           cguess = str(input('Enter a constient in lowercase form: ')) 
-           for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
+        if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
+            print(wheelvalue)                                                               
+            cguess = str(input('Enter a constient in lowercase form: ')) 
+            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
                 if goal[i] ==cguess:
                    output[i]==cguess
                    player3amount += wheelvalue
                    print(output)
                 else:
                     turnyes=False
-        if wheelvalue == -1:
+        if wheelvalue == 'Bankrupt':
             player3amount =0
             turnyes=False
         else:                               #lose turn
@@ -93,6 +93,7 @@ def constinent():
     if personturn==2:       #player 2
         if wheelvalue >0:
            cguess = str(input('Enter a constient in lowercase form: ')) 
+           print(wheelvalue)
            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
                 if goal[i] ==cguess:
                    output[i]==cguess
@@ -100,7 +101,7 @@ def constinent():
                    print(output)
                 else:
                     turnyes=False
-        if wheelvalue == -1:
+        if wheelvalue == 'Bankrupt':
             player2amount =0
             turnyes=False
         else:                               #lose turn
@@ -110,6 +111,7 @@ def constinent():
     if personturn==1:       #player 1
         if wheelvalue >0:
            cguess = str(input('Enter a constient in lowercase form: ')) 
+           print(wheelvalue)
            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
                 if goal[i] ==cguess:
                    output[i]==cguess
@@ -117,7 +119,7 @@ def constinent():
                    print(output)
                 else:
                     turnyes=False
-        if wheelvalue == -1:
+        if wheelvalue == 'Bankrupt':
             player1amount =0
             turnyes=False
         else:                               #lose turn
@@ -152,7 +154,7 @@ while roundnumber == 1:
     while turnyes == True:
         if countturn%3==0:
             personturn=3
-        elif countturn%2==0:
+        elif countturn%3==2:
             personturn=2
         else: 
             personturn=1
@@ -216,6 +218,7 @@ if player1amount > player2amount and player1amount > player3amount:
 
 #Final Round
 
+#while roundnumber ==3:
 
 
 
