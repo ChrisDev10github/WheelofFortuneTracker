@@ -82,52 +82,76 @@ def consonant():
     global turnyes
 
     wheelvalue = spinwheel()                    #spin wheel
-    if personturn==3:       #player 3
+
+
+    if personturn==3:       #player 3                                                           If guess right still goes to next player. If wrong goes to P3 not P2
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
-            print(f'Player3 spun a {wheelvalue}')                                                               
-            cguess = str(input('Enter a constient in lowercase form: ')) 
+           cguess = str(input('Enter a constient in lowercase form: ')) 
+           print(f'Player3 spun a {wheelvalue}')
 
-            if cguess not in goal:
-                print("Does this show")
+
+           if cguess not in goal:
+                #print("Does this show")
                 turnyes=False
+                
 
-            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
+           for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
                 if goal[i] ==cguess:
-                   output[i]=cguess
-                   player3amount += wheelvalue
-                   print(f'Player3 has {player3amount}')
-                   print(output)
-
+                    output[i]=cguess
+                    player3amount += wheelvalue
+                    print(f'Player3 has {player3amount}')
+                    print(output)   
+                    turnyes=True
 
         if wheelvalue == 'Bankrupt':
             player3amount =0
             turnyes=False
-        else:                               #lose turn
-            turnyes=False             
+            print('Bankrupt')
 
 
-    if personturn==2:       #player 2
+        if wheelvalue == 'Lose Turn':                               #lose turn
+            turnyes=False   
+            print('Lose Turn')
+
+        
+        if turnyes ==False:
+                countturn+=1             
+
+
+
+    if personturn==2:       #player 2                                                           If guess right still goes to next player. If wrong goes to P3 not P2
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
            print(f'Player2 spun a {wheelvalue}')
 
+
            if cguess not in goal:
-                print("Does this show")
+                #print("Does this show")
                 turnyes=False
+                
 
            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
                 if goal[i] ==cguess:
-                   output[i]=cguess
-                   player2amount += wheelvalue
-                   print(f'Player2 has {player2amount}')
-                   print(output)
-
+                    output[i]=cguess
+                    player2amount += wheelvalue
+                    print(f'Player2 has {player2amount}')
+                    print(output)   
+                    turnyes=True
 
         if wheelvalue == 'Bankrupt':
             player2amount =0
             turnyes=False
-        else:                               #lose turn
-            turnyes=False    
+            print('Bankrupt')
+
+
+        if wheelvalue == 'Lose Turn':                               #lose turn
+            turnyes=False   
+            print('Lose Turn')
+
+        
+        if turnyes ==False:
+                countturn+=1
+
 
 
     if personturn==1:       #player 1                                                           If guess right still goes to next player. If wrong goes to P3 not P2
@@ -137,7 +161,7 @@ def consonant():
 
 
            if cguess not in goal:
-                print("Does this show")
+                #print("Does this show")
                 turnyes=False
                 
 
@@ -152,11 +176,12 @@ def consonant():
         if wheelvalue == 'Bankrupt':
             player1amount =0
             turnyes=False
+            print('Bankrupt')
 
 
         if wheelvalue == 'Lose Turn':                               #lose turn
             turnyes=False   
-
+            print('Lose Turn')
         
         if turnyes ==False:
                 countturn+=1
