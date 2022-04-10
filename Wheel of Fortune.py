@@ -47,7 +47,8 @@ def vowel():
 
             for i in range(0,len(word)):
                 if goal[i]==vguess:
-                    output[i]=vguess                                 #word needs to addressed
+                    output[i]=vguess                               
+                    print(output)
                     turnyes=True
 
             if vguess not in goal:
@@ -69,7 +70,8 @@ def vowel():
 
             for i in range(0,len(word)):
                 if goal[i]==vguess:
-                    output[i]=vguess                                 #word needs to addressed
+                    output[i]=vguess                                
+                    print(output)
                     turnyes=True
             
             if vguess not in goal:
@@ -91,7 +93,8 @@ def vowel():
 
             for i in range(0,len(word)):
                 if goal[i]==vguess:
-                    output[i]=vguess                                 #word needs to addressed
+                    output[i]=vguess                                 
+                    print(output)
                     turnyes=True
                 
             if vguess not in goal:
