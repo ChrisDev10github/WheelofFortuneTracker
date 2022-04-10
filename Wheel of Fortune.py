@@ -74,6 +74,7 @@ def vowel():
             turnyes=False      
 
 
+
 def consonant():
     global player1amount
     global player2amount
@@ -87,6 +88,11 @@ def consonant():
     if personturn==3:       #player 3                                                           If guess right still goes to next player. If wrong goes to P3 not P2
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
+
+           if cguess in ['a','e','i','o','u']:
+               turnyes=False
+               print('You cant guess vowels')
+
            print(f'Player3 spun a {wheelvalue}')
 
 
@@ -122,6 +128,11 @@ def consonant():
     if personturn==2:       #player 2                                                           If guess right still goes to next player. If wrong goes to P3 not P2
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
+
+           if cguess in ['a','e','i','o','u']:
+               turnyes=False
+               print('You cant guess vowels')
+
            print(f'Player2 spun a {wheelvalue}')
 
 
@@ -157,6 +168,11 @@ def consonant():
     if personturn==1:       #player 1                                                           If guess right still goes to next player. If wrong goes to P3 not P2
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
+
+           if cguess in ['a','e','i','o','u']:
+               turnyes=False
+               print('You cant guess vowels')
+
            print(f'Player1 spun a {wheelvalue}')
 
 
