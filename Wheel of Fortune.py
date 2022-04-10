@@ -119,7 +119,7 @@ def consonant():
     wheelvalue = spinwheel()                    #spin wheel
 
 
-    if personturn==3:       #player 3                                                           If guess right still goes to next player. If wrong goes to P3 not P2
+    if personturn==3:       #player 3                                                           
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
 
@@ -158,7 +158,7 @@ def consonant():
 
 
 
-    if personturn==2:       #player 2                                                           If guess right still goes to next player. If wrong goes to P3 not P2
+    if personturn==2:       #player 2                                                           
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
 
@@ -198,7 +198,7 @@ def consonant():
 
 
 
-    if personturn==1:       #player 1                                                           If guess right still goes to next player. If wrong goes to P3 not P2
+    if personturn==1:       #player 1                                                           
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
 
@@ -240,14 +240,21 @@ def consonant():
 
 def wordguess():
     global roundnumber
+    global countturn
+    global turnyes
+
     wguess =str(input('Enter Word all lowercase: '))
     if wguess ==word:
         print(goal)
         print("You guessed the word correctly!")
+        turnyes=True
+    if wguess != word:
         turnyes=False
-        roundnumber += 1                #cant get into next round
-    else:
-        turnyes=False
+        print("Not the word")
+    if turnyes ==False:
+        countturn+=1
+    if turnyes ==True:
+        roundnumber+=1                      #cant get into round2
 
 
 
@@ -293,6 +300,7 @@ word=getword()
 word=word.lower()
 goal=list(word)
 output=[]
+print(goal)
 for i in range(0,len(goal),1):
     output.append('_ ')
 
