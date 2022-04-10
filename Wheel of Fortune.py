@@ -17,6 +17,7 @@ vguess=''
 cguess=''
 wguess=''
 finalplayer=0
+endround=False
 
 
 def spinwheel():
@@ -239,12 +240,14 @@ def wordguess():
     global roundnumber
     global countturn
     global turnyes
+    global endround
 
     wguess =str(input('Enter Word all lowercase: '))
     if wguess ==word:
         print(goal)
         print("You guessed the word correctly!")
         turnyes=True
+        endround=True           #new test
     if wguess != word:
         turnyes=False
         print("Not the word")
@@ -288,7 +291,8 @@ while roundnumber == 1:
             consonant()
         else:
             wordguess()
-    #countturn+=1
+    if endround==True:
+        roundnumber+=1
 
 
 #Round 2
@@ -323,9 +327,9 @@ while roundnumber == 2:
             vowel()
         if choice == 2:
             consonant()
-        else:
+        if choice ==3:
             wordguess()
-    countturn+=1
+    #countturn+=1
     
 
 #Knowing Final Player
