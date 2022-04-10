@@ -18,6 +18,7 @@ cguess=''
 wguess=''
 finalplayer=0
 endround=False
+vowelset = ['a','e','i','o','u']
 
 
 def spinwheel():
@@ -38,73 +39,91 @@ def vowel():
     global countturn
     global turnyes
 
-    if personturn==3:           #Player 3
-        if player3amount >=250:                                 #checks if P3 have 250
-            player3amount = player3amount - 250                 #subtracts $250
-            vguess = str(input('Enter a vowel in lowercase form: '))
-            if vguess not in ['a','e','i','o','u']:                                     #verify if vowel
-               turnyes=False
-               print('You cant guess consonants')
-            if vguess not in goal:                              #if vowel is not in the word
-                turnyes=False
-            else:                                               #vowel in word add to output list
-                for i in range(0,len(word)):
-                    if goal[i]==vguess:
-                        output[i]=vguess                                 
-                        print(output)
+    if personturn==3:       #player 3      
+
+        if player3amount < 250:
+            turnyes=False
+            print('You dont have enough money to buy a vowel')
+
+
+        if player3amount>=250:
+            vguess = str(input('Enter a vowel in lowercase form: ')) 
+            player3amount = player3amount - 250
+
+            if vguess in vowelset:
+                for v in range(0,len(goal)):                                                     
+                    if goal[v] ==vguess:
+                        output[v]=vguess
+                        print(f'Player3 has {player3amount}')
+                        print(output)   
                         turnyes=True
 
+            if vguess not in goal:
+                print('That vowel is not in the word')
+                turnyes=False     
+        
+        if turnyes ==False:
+                countturn+=1  
 
-        if player3amount<250:                                   #player not enough money
-            print("You cannot buy a vowel and you lose your turn")
-            turnyes=False      
-        if turnyes == False:                                    #next person turn
-            countturn+=1  
 
-    if personturn==2:           #Player 2
-        if player2amount >=250:                                 #checks if P2 have 250
-            player2amount = player2amount - 250                 #subtracts $250
-            vguess = str(input('Enter a vowel in lowercase form: '))
-            if vguess not in ['a','e','i','o','u']:                                     #verify if vowel
-               turnyes=False
-               print('You cant guess consonants')
-            if vguess not in goal:                              #if vowel is not in the word
-                turnyes=False
-            else:                                               #vowel in word add to output list
-                for i in range(0,len(word)):
-                    if goal[i]==vguess:
-                        output[i]=vguess                                 
-                        print(output)
+
+
+    if personturn==2:       #player 2      
+
+        if player2amount < 250:
+            turnyes=False
+            print('You dont have enough money to buy a vowel')
+
+
+        if player2amount>=250:
+            vguess = str(input('Enter a vowel in lowercase form: ')) 
+            player2amount = player2amount - 250
+
+            if vguess in vowelset:
+                for v in range(0,len(goal)):                                                     
+                    if goal[v] ==vguess:
+                        output[v]=vguess
+                        print(f'Player2 has {player2amount}')
+                        print(output)   
                         turnyes=True
 
-        if player2amount<250:                                   #player not enough money
-            print("You cannot buy a vowel and you lose your turn")
-            turnyes=False      
-        if turnyes == False:                                    #next person turn
-            countturn+=1     
+            if vguess not in goal:
+                print('That vowel is not in the word')
+                turnyes=False     
+        
+        if turnyes ==False:
+                countturn+=1  
 
 
-    if personturn==1:           #Player 1
-        if player1amount >=250:                                 #checks if P1 have 250
-            player1amount = player1amount - 250                 #subtracts $250
-            vguess = str(input('Enter a vowel in lowercase form: '))
-            if vguess not in ['a','e','i','o','u']:                                     #verify if vowel
-               turnyes=False
-               print('You cant guess consonants')
-            if vguess not in goal:                              #if vowel is not in the word
-                turnyes=False
-            else:                                               #vowel in word add to output list
-                for i in range(0,len(word)):
-                    if goal[i]==vguess:
-                        output[i]=vguess                                 
-                        print(output)
+
+
+    if personturn==1:       #player 1      
+
+        if player1amount < 250:
+            turnyes=False
+            print('You dont have enough money to buy a vowel')
+
+
+        if player1amount>=250:
+            vguess = str(input('Enter a vowel in lowercase form: ')) 
+            player1amount = player1amount - 250
+
+            if vguess in vowelset:
+                for v in range(0,len(goal)):                                                     
+                    if goal[v] ==vguess:
+                        output[v]=vguess
+                        print(f'Player1 has {player1amount}')
+                        print(output)   
                         turnyes=True
 
-        if player1amount<250:                                   #player not enough money
-            print("You cannot buy a vowel and you lose your turn")
-            turnyes=False      
-        if turnyes == False:                                    #next person turn
-            countturn+=1 
+            if vguess not in goal:
+                print('That vowel is not in the word')
+                turnyes=False     
+        
+        if turnyes ==False:
+                countturn+=1
+
+
 
 
 
@@ -289,8 +308,8 @@ while roundnumber == 1:
             vowel()
         if choice == 2:
             consonant()
-        else:
-            wordguess()
+ #       else:
+  #          wordguess()
     if endround==True:
         roundnumber+=1
 
