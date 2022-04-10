@@ -30,6 +30,10 @@ def getword():
     return random.choice(dictionary)
 
 def vowel():
+    global player1amount
+    global player2amount
+    global player3amount
+
     if personturn==3:                         #Player3
         if player3amount >=250:                                 #checks if P3 have 250
             player3amount = player3amount - 250                 #subtracts $250
@@ -71,6 +75,10 @@ def vowel():
 
 
 def constinent():
+    global player1amount
+    global player2amount
+    global player3amount
+
     wheelvalue = spinwheel()                    #spin wheel
     if personturn==3:       #player 3
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
@@ -144,6 +152,7 @@ word=getword()
 word=word.lower()
 goal=list(word)
 output=[]
+print(goal)    #testing purpose
 for i in range(0,len(goal),1):
     output.append('_ ')
 
@@ -158,7 +167,7 @@ while roundnumber == 1:
             personturn=2
         else: 
             personturn=1
-
+        print(f'Player {personturn} turn')
         choice =int(input('''
                             What do you want to do (1-3):
                                 1. Buy vowel
