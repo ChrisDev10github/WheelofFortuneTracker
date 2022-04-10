@@ -74,15 +74,17 @@ def vowel():
             turnyes=False      
 
 
-def constinent():
+def consonant():
     global player1amount
     global player2amount
     global player3amount
+    global countturn
+    global turnyes
 
     wheelvalue = spinwheel()                    #spin wheel
     if personturn==3:       #player 3
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
-            print(f'Player spun a {wheelvalue}')                                                               
+            print(f'Player3 spun a {wheelvalue}')                                                               
             cguess = str(input('Enter a constient in lowercase form: ')) 
 
             if cguess not in goal:
@@ -93,7 +95,7 @@ def constinent():
                 if goal[i] ==cguess:
                    output[i]=cguess
                    player3amount += wheelvalue
-                   print(f'Person has {player3amount}')
+                   print(f'Player3 has {player3amount}')
                    print(output)
 
 
@@ -107,7 +109,7 @@ def constinent():
     if personturn==2:       #player 2
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
-           print(f'Player spun a {wheelvalue}')
+           print(f'Player2 spun a {wheelvalue}')
 
            if cguess not in goal:
                 print("Does this show")
@@ -117,7 +119,7 @@ def constinent():
                 if goal[i] ==cguess:
                    output[i]=cguess
                    player2amount += wheelvalue
-                   print(f'Person has {player2amount}')
+                   print(f'Player2 has {player2amount}')
                    print(output)
 
 
@@ -128,44 +130,48 @@ def constinent():
             turnyes=False    
 
 
-    if personturn==1:       #player 1
+    if personturn==1:       #player 1                                                           If guess right still goes to next player. If wrong goes to P3 not P2
         if wheelvalue != 'Bankrupt' and wheelvalue != 'Lose Turn':
            cguess = str(input('Enter a constient in lowercase form: ')) 
-           print(f'Player spun a {wheelvalue}')
+           print(f'Player1 spun a {wheelvalue}')
 
 
            if cguess not in goal:
                 print("Does this show")
                 turnyes=False
+                
 
            for i in range(0,len(goal)):                                                      #goal not assigned which is the list of word
                 if goal[i] ==cguess:
                     output[i]=cguess
                     player1amount += wheelvalue
-                    print(f'Person has {player1amount}')
+                    print(f'Player1 has {player1amount}')
                     print(output)   
-                     
-                #else:
-                 #   print("Does this show")
-                  #  turnyes=False
-
-            
+                    turnyes=True
 
         if wheelvalue == 'Bankrupt':
             player1amount =0
             turnyes=False
-        else:                               #lose turn
-            turnyes=False    
+
+
+        if wheelvalue == 'Lose Turn':                               #lose turn
+            turnyes=False   
+
+        
+        if turnyes ==False:
+                countturn+=1
+
 
 
 
 def wordguess():
+    global roundnumber
     wguess =str(input('Enter Word all lowercase: '))
     if wguess ==word:
         print(goal)
         print("You guessed the word correctly!")
         turnyes=False
-        roundnumber += 1
+        roundnumber += 1                #cant get into next round
     else:
         turnyes=False
 
@@ -195,19 +201,20 @@ while roundnumber == 1:
         choice =int(input('''
                             What do you want to do (1-3):
                                 1. Buy vowel
-                                2. Spin the Wheel and Guess a Constinent
+                                2. Spin the Wheel and Guess a consonant
                                 3. Guess Word
                                 ''')) 
         if choice == 1:
             vowel()
         if choice == 2:
-            constinent()
+            consonant()
         else:
             wordguess()
-    countturn+=1
+    #countturn+=1
 
 
 #Round 2
+print("Round 2")
 word=getword()
 word=word.lower()
 goal=list(word)
@@ -230,13 +237,13 @@ while roundnumber == 2:
         choice =int(input('''
                             What do you want to do (1-3):
                                 1. Buy vowel
-                                2. Guess Constinent
+                                2. Guess consonant
                                 3. Guess Word
                                 ''')) 
         if choice == 1:
             vowel()
         if choice == 2:
-            constinent()
+            consonant()
         else:
             wordguess()
     countturn+=1
