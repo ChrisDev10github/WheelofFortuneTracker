@@ -67,7 +67,6 @@ def vowel():
 
 
 
-
     if personturn==2:       #player 2      
 
         if player2amount < 250:
@@ -92,8 +91,7 @@ def vowel():
                 turnyes=False     
         
         if turnyes ==False:
-                countturn+=1  
-
+                countturn+=1 
 
 
 
@@ -122,9 +120,6 @@ def vowel():
         
         if turnyes ==False:
                 countturn+=1
-
-
-
 
 
 
