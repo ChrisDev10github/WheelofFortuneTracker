@@ -303,8 +303,10 @@ while roundnumber == 1:
             vowel()
         if choice == 2:
             consonant()
- #       else:
-  #          wordguess()
+        if choice ==3:
+            wordguess()
+            if endround==True:
+                break
     if endround==True:
         roundnumber+=1
 
