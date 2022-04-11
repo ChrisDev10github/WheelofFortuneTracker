@@ -1,0 +1,204 @@
+Rules:
+Round =word
+For each person turn they can either buy vowel for $250, guess word, or (spin/guess letter)
+If you guess a consonant wrong, guess vowel wrong, spin a bankrupt, or spin lose turn. You lose turn and go to next player
+If you spin bankrupt you lose all money regardless of round. 
+If they player guesses word consonant correctly the they are reprompted the same threee choices.
+If the player spin/guess consonant correctly then decides to spin/guess again and get it wrong they still earn the money from the first spin/guess of that turn.
+If the player wants to guess the word they don't gain any more money but the round finishes
+2 rounds then final round
+No phrases and just words
+No categories
+If there are 3 T's and they guess T they get triple the value
+
+
+
+Pseudo Code
+
+import random
+
+player1amount is 0
+player2amount is 0
+player3amount is 0
+word=[]
+wheel = values
+
+turnyes=True
+countturn=0
+game = True
+roundnumber=1
+personturn=0
+
+
+function spin wheel
+	return value from list
+
+function get word
+	file open and close
+
+function buy vowel
+	[IF statment for all 3 players (copy and paste for each player)]
+	if player doesn't have:
+		print you dont have enough money
+		next player turn (increase turn number by 1
+	if player has 250
+		player lose 250
+		ask for vowel
+		if vowel in word
+		    for loop 
+			check indices
+			change display
+			display
+		if vowel not in word
+			print vowel not in word
+			turnyes=False
+	
+	if turnyes=false
+		countturn+=1
+
+
+function for consonant 
+	wheelvalue= spin wheel function
+	[IF statment for all 3 players (copy and paste for each player)]
+	if spin wheel not bankrupt or lose turn
+		user input letter in lowercase
+		validate input to see if its a vowel
+		if vowel
+			print that you cant guess vowel
+			nextturn
+		if consonant not in goal:
+			next turn
+		for loop
+			check indices
+			change display
+			add value of spin to players total money
+			print output
+		
+	if value is bankrupt 
+		players total money =0
+		turnyes=False (next turn)
+		say you spun bankrupt
+		
+
+	if value is lose turn
+		turnyes=False
+		say you lose turn
+	if turnyes=false
+		countturn+=1
+
+function word guess
+	user input
+	check if input equals word
+	if yes
+		round number +=1
+		say you guess correctly
+		end round
+	else
+		turnyes=Flase(next turn)
+		countturn+=1
+
+
+
+#Round1
+
+get word
+lowercase the word
+make list for word		(goal)
+output=[]
+append '_' to output based on length of word
+
+
+
+while round number ==1
+
+
+	turnyes=True
+# for one turn
+	while continue turn is true keep doing this	(turnyes==True)
+		if countturn%3==0
+			personturn=3
+		elif countturn%3==2
+			personturn=2
+		else 
+			personturn=1
+		user input what they want to do
+			call function
+		until worng exit loop
+		
+	
+
+
+#Round2
+
+get word
+lowercase the word
+make list for word		(goal)
+output=[]
+append '_' to output based on length of word
+
+
+
+while round number ==2
+
+
+	turnyes=True
+# for one turn
+	while continue turn is true keep doing this	(turnyes==True)
+		if countturn%3==0
+			personturn=3
+		elif countturn%3==2
+			personturn=2
+		else 
+			personturn=1
+		user input what they want to do
+			call function
+		until worng exit loop
+
+#Find final player
+if statements based on player total money
+
+function check letters
+	if letters are in goal
+		for loop
+			check indices
+givenlist=['r','s','t','l','n','e']
+
+#Final Round
+
+while round number ==3
+
+	get word
+	lowercase the word
+	make list for word
+	output=[]
+	append '_' to output based on length of word
+	
+
+	for loop for given list
+		check letters(i)
+	print output
+
+	consonant input
+	checkletter()
+	consonant input
+	checkletter()
+	consonant input
+	checkletter()
+	vowel input
+	checkletter()
+	printoutput
+
+	user word guess
+	if guess =word
+		if final player = player number
+		add 1000
+		print win
+	if guess =word
+		if final player = player number
+		add 1000
+		print win
+	if guess =word
+		if final player = player number
+		add 1000
+		print win
+	else print wrong guess
