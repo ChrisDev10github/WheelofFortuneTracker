@@ -308,7 +308,7 @@ while roundnumber == 1:
             if endround==True:
                 break
     if endround==True:
-        roundnumber+=1
+        roundnumber=2
 
 
 #Round 2
@@ -317,9 +317,10 @@ word=getword()
 word=word.lower()
 goal=list(word)
 output=[]
-print(goal)
+print(goal)    #testing purpose
 for i in range(0,len(goal),1):
     output.append('_ ')
+endround=False
 
 while roundnumber == 2:
     turnyes=True
@@ -328,15 +329,15 @@ while roundnumber == 2:
     while turnyes == True:
         if countturn%3==0:
             personturn=3
-        elif countturn%2==0:
+        elif countturn%3==2:
             personturn=2
         else: 
             personturn=1
-
+        print(f'Player {personturn} turn')
         choice =int(input('''
                             What do you want to do (1-3):
                                 1. Buy vowel
-                                2. Guess consonant
+                                2. Spin the Wheel and Guess a consonant
                                 3. Guess Word
                                 ''')) 
         if choice == 1:
@@ -345,7 +346,10 @@ while roundnumber == 2:
             consonant()
         if choice ==3:
             wordguess()
-    #countturn+=1
+            if endround==True:
+                break
+    if endround==True:
+        roundnumber=3
     
 
 #Knowing Final Player
@@ -356,10 +360,54 @@ if player2amount > player1amount and player2amount > player3amount:
 if player1amount > player2amount and player1amount > player3amount:
     finalplayer = 1
 
+print(f'Final player: {finalplayer}')
+
+
+
+
+def checkletters(L):
+    if L in goal:
+        for i in range(0,len(goal)):
+            if goal[i] ==L:
+                output[i]=L
+
+givenlist=['r','s','t','l','n','e']
+
 
 #Final Round
+print("Final Round")
+word=getword()
+word=word.lower()
+goal=list(word)
+output=[]
+print(goal)    #testing purpose
+for i in range(0,len(goal),1):
+    output.append('_ ')
+endround=False
+while roundnumber ==3:
+    for i in givenlist:
+        checkletters(i)
+    print(output)           #testing purpose
 
-#while roundnumber ==3:
+    cguess = str(input('Enter a constient in lowercase form: ')) 
+    checkletters(cguess)
+    cguess = str(input('Enter a constient in lowercase form: ')) 
+    checkletters(cguess)
+    cguess = str(input('Enter a constient in lowercase form: ')) 
+    checkletters(cguess)
+    vguess = str(input('Enter a vowel in lowercase form: ')) 
+    checkletters(vguess)
+    print(output)
 
-
-
+    wguess =str(input('Enter Word all lowercase: '))
+    if wguess ==word:
+#        print(goal)
+        if finalplayer==1:
+            print(f"You guessed the word correctly and won ${player1amount}")
+        if finalplayer==2:
+            print(f"You guessed the word correctly and won ${player2amount}")
+        if finalplayer==3:
+            print(f"You guessed the word correctly and won ${player3amount}")
+    else:
+        print("Sorry that is not it and did not gain any money")
+    roundnumber=4
