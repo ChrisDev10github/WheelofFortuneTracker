@@ -361,6 +361,7 @@ if player1amount > player2amount and player1amount > player3amount:
     finalplayer = 1
 
 print(f'Final player: {finalplayer}')
+print('Final round reward is an extra $1000')
 
 
 
@@ -403,11 +404,14 @@ while roundnumber ==3:
     if wguess ==word:
 #        print(goal)
         if finalplayer==1:
+            player1amount += 1000
             print(f"You guessed the word correctly and won ${player1amount}")
         if finalplayer==2:
+            player1amount += 1000
             print(f"You guessed the word correctly and won ${player2amount}")
         if finalplayer==3:
+            player1amount += 1000
             print(f"You guessed the word correctly and won ${player3amount}")
     else:
-        print("Sorry that is not it and did not gain any money")
+        print("Sorry that is not it and did not gain any more money")
     roundnumber=4
